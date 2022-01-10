@@ -1,0 +1,270 @@
+" An example for a gvimrc file.
+" The commands in this are executed when the GUI is started.
+"
+" Maintainer:	Bram Moolenaar <Bram@vim.org>
+" Last change:	2001 Sep 02
+"
+" To use it, copy it to
+"     for Unix and OS/2:  ~/.gvimrc
+"	      for Amiga:  s:.gvimrc
+"  for MS-DOS and Win32:  $VIM\_gvimrc
+"	    for OpenVMS:  sys$login:.gvimrc
+
+" Make external commands work through a pipe instead of a pseudo-tty
+"set noguipty
+
+" set the X11 font to use
+" set guifont=-misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-1
+
+set ch=2		" Make command line two lines high
+
+set mousehide		" Hide the mouse when typing text
+
+" Make shift-insert work like in Xterm
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
+
+" Only do this for Vim version 5.0 and later.
+if version >= 500
+
+  " I like highlighting strings inside C comments
+  let c_comment_strings=1
+
+  " Switch on syntax highlighting if it wasn't on yet.
+  if !exists("syntax_on")
+    syntax on
+  endif
+
+  " Switch on search pattern highlighting.
+  set hlsearch
+
+  " For Win32 version, have "K" lookup the keyword in a help file
+  "if has("win32")
+  "  let winhelpfile='windows.hlp'
+  "  map K :execute "!start winhlp32 -k <cword> " . winhelpfile <CR>
+  "endif
+
+  " Set nice colors
+  " background for normal text is light grey
+  " Text below the last line is darker grey
+  " Cursor is green, Cyan when ":lmap" mappings are active
+  " Constants are not underlined but have a slightly lighter background
+  highlight Normal guibg=grey90
+  highlight Cursor guibg=Green guifg=NONE
+  highlight lCursor guibg=Cyan guifg=NONE
+  highlight NonText guibg=grey80
+  highlight Constant gui=NONE guibg=grey95
+  highlight Special gui=NONE guibg=grey95
+
+endif
+
+
+source ~/.vimrc
+set transp=10
+" set guifont=Monaco:h10
+set guifont=Menlo:h10
+let $PATH = ".:".$PATH.":/usr/local/bin"
+
+set fo-=o
+set fo-=c
+set fo-=r
+
+autocmd FocusLost * wall
+autocmd TabLeave * wall
+autocmd WinLeave * if !&ro && len(bufname("%")) && bufname("%") !~ "NERD" && &buftype != "nofile" && &buftype != "terminal" && &buftype != "help"|w|endif
+
+
+" Graphical Editor Dimensions (gedim) support:
+let g:screenDimensions = { '1920,1080': [ 304, 80 ], '1440,900': [ 224, 68 ], '1280,768': [ 196, 56 ], '2880,1800': [ 308, 80 ], '2048,1152': [ 324, 72 ], '2560,1440': [ 420, 120 ], '3456,2234': [ 410, 135 ] }
+
+
+color darkblue
+
+
+" *** Workspaces and Tabs ***
+
+" *** Meltwater set up ***
+
+" * poof *
+tabnew
+lcd ~/development/poof
+NERDTree
+set nu
+set guioptions=aeg
+set cmdheight=1
+
+
+" * SSScoring *
+tabnew
+lcd ~/development/SSScoring
+NERDTree
+set nu
+set guioptions=aeg
+set cmdheight=1
+
+
+" " * aoc2020 *
+" tabnew
+" lcd ~/development/aoc2020
+" NERDTree
+" set nu
+" set guioptions=aeg
+" set cmdheight=1
+
+
+" " * FHAI Common *
+" tabnew
+" lcd ~/meltwater/common
+" NERDTree
+" set nu
+" set guioptions=aegimtT
+" set cmdheight=1
+" !rm -Rf $(find . | awk '/__pycache__$/ || /\.pyc/')
+
+" " * skel *
+" tabnew
+" lcd ~/meltwater/skel
+" NERDTree
+" set nu
+" set guioptions=aegimtT
+" set cmdheight=1
+" !rm -Rf $(find . | awk '/__pycache__$/ || /\.pyc/')
+
+
+" * covidvu mini-lab*
+" tabnew
+" lcd ~/tmp/covidvu
+" NERDTree
+" set nu
+" set guioptions=aeg
+" set cmdheight=1
+
+
+" *** CIME ***
+
+" " * trackodometer *
+" tabnew
+" lcd ~/development/trackodometer
+" NERDTree
+" set nu
+" set guioptions=aeg
+" set cmdheight=1
+
+
+tabnew
+lcd ~/development/cime
+NERDTree
+set nu
+set guioptions=aeg
+set cmdheight=1
+
+
+" " *** Reactor Workspace ***
+" tabnew
+" lcd ~/development/cosmify/reactor
+" NERDTree
+" set nu
+" set guioptions=
+" set guioptions=aegimtT
+" set cmdheight=1
+
+" *** Clara Workspace ***
+" tabnew
+" lcd ~/development/cosmify/clara
+" NERDTree
+" set nu
+" set guioptions=
+" set guioptions=aegimtT
+" set cmdheight=1
+
+" " *** Common Workspace ***
+" tabnew
+" lcd ~/development/cosmify/common
+" NERDTree
+" set nu
+" set guioptions=
+" set guioptions=aegimtT
+" set cmdheight=1
+" 
+" " *** Clara Bundles Workspace ***
+" tabnew
+" lcd ~/development/cosmify/clarab
+" NERDTree
+" set nu
+" set guioptions=
+" set guioptions=aegimtT
+" set cmdheight=1
+" 
+" " *** Couchbase Mobile ***
+" tabnew
+" lcd ~/development/cosmify/python-couchbaselite
+" NERDTree
+" set nu
+" set guioptions=
+" set guioptions=aegimtT
+" set cmdheight=1
+" 
+" " *** Nebula ***
+" tabnew
+" lcd ~/development/cosmify/nebula
+" NERDTree
+" set nu
+" set guioptions=
+" set guioptions=aegimtT
+" set cmdheight=1
+
+" " *** Biz Dev Workspace ***
+" tabnew
+" lcd ~/development/cosmify/biz-dev
+" set colorcolumn=80
+" NERDTree
+" set nu
+" set guioptions=
+" set guioptions=aegimtT
+" set cmdheight=1
+" 
+" " *** Box / Confluex ***
+" 
+" tabnew
+" lcd ~/box
+" set colorcolumn=0
+" NERDTree
+" set nu
+" set cmdheight=1
+" 
+" " *** Box ***
+" 
+" tabnew
+" lcd ~/development/box-salestaxbooking
+" set colorcolumn=0
+" NERDTree
+" set nu
+" set cmdheight=1
+
+" Doing this to keep the same command height across all tabs
+
+" *** CA ***
+" tabnew
+" lcd ~/development/CA
+" set colorcolumn=0
+" NERDTree
+" set nu
+" set guioptions=
+" set guioptions=aegimtT
+" set cmdheight=1
+
+" *** CA ***
+
+
+tabfirst
+tabclose
+
+" Set some tab/workspace logic to keep things sane (auto-save, focus on first tab, etc.):
+tabfirst
+
+
+" *** Conque configuration ***
+
+let g:ConqueTerm_CloseOnEnd = 1
+let g:ConqueTerm_ReadUnfocused = 1
+
