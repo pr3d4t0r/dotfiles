@@ -22,5 +22,5 @@ color desert
 
 
 " Pathogen support:
-# execute pathogen#infect()
+" execute pathogen#infect()
 
