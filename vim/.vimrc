@@ -22,7 +22,5 @@ color desert
 
 
 " Pathogen support:
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
+# execute pathogen#infect()
 
